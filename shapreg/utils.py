@@ -15,7 +15,7 @@ def crossentropyloss(pred, target):
         return - np.sum(np.log(pred) * target, axis=1)
     else:
         # Standard cross entropy loss.
-        return - np.log(pred[np.arange(len(pred)), target])
+        return - np.sum(np.log(pred) * target[:, np.newaxis], axis=1)
 
 
 def mseloss(pred, target):
