@@ -30,7 +30,7 @@ def calculate_result(A, b, total):
             A_inv_one = np.linalg.solve(A + 1e-8*np.eye(A.shape[0]), np.ones((num_players, 1)))
         else:
             A_inv_one = np.linalg.solve(A  + 1e-8*np.eye(A.shape[0]), np.ones(num_players))
-        A_inv_vec = np.linalg.solve(A, b)
+        A_inv_vec = np.linalg.solve(A + 1e-8*np.eye(A.shape[0]), b)
         values = (
             A_inv_vec -
             A_inv_one * (np.sum(A_inv_vec, axis=0, keepdims=True) - total)
