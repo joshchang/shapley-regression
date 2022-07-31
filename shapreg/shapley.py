@@ -27,9 +27,9 @@ def calculate_result(A, b, total):
     num_players = A.shape[1]
     try:
         if len(b.shape) == 2:
-            A_inv_one = np.linalg.solve(A, np.ones((num_players, 1)))
+            A_inv_one = np.linalg.solve(A + 1e-8, np.ones((num_players, 1)))
         else:
-            A_inv_one = np.linalg.solve(A, np.ones(num_players))
+            A_inv_one = np.linalg.solve(A + 1e-8, np.ones(num_players))
         A_inv_vec = np.linalg.solve(A, b)
         values = (
             A_inv_vec -
